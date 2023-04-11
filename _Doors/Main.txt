@@ -1,0 +1,200 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+--Main-Window
+local Window = OrionLib:MakeWindow({Name = "Some Random Crappy script", HidePremium = true, SaveConfig = true, ConfigFolder = "SomeCrappyScriptCONFIG"})
+
+--Entity_Spawner
+local Tab = Window:MakeTab({
+	Name = "Entity Spawner",
+	Icon = "rbxassetid://0",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Regular"
+})	
+
+
+Tab:AddButton({
+	Name = "Rush",
+	Callback = function()
+      		local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+
+
+-- Create entity
+local entityTable = Spawner.createEntity({
+    CustomName = "Rush", -- Custom name of your entity
+    Model = "https://github.com/RegularVynixu/Utilities/blob/main/Doors%20Entity%20Spawner/Models/Rush.rbxm?raw=true", -- Can be GitHub file or rbxassetid
+    Speed = 100, -- Percentage, 100 = default Rush speed
+    DelayTime = 2, -- Time before starting cycles (seconds)
+    HeightOffset = 0,
+    CanKill = true,
+    KillRange = 50,
+    BackwardsMovement = false,
+    BreakLights = true,
+    FlickerLights = {
+        true, -- Enabled/Disabled
+        1, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 1,
+        Max = 1,
+        WaitTime = 2,
+    },
+    CamShake = {
+        true, -- Enabled/Disabled
+        {3.5, 20, 0.1, 1}, -- Shake values (don't change if you don't know)
+        100, -- Shake start distance (from Entity to you)
+    },
+    Jumpscare = {
+        true, -- Enabled/Disabled
+        {
+            Image1 = "rbxassetid://10483855823", -- Image1 url
+            Image2 = "rbxassetid://10483999903", -- Image2 url
+            Shake = true,
+            Sound1 = {
+                10483790459, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Sound2 = {
+                10483837590, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Flashing = {
+                true, -- Enabled/Disabled
+                Color3.fromRGB(255, 255, 255), -- Color
+            },
+            Tease = {
+                true, -- Enabled/Disabled
+                Min = 1,
+                Max = 3,
+            },
+        },
+    },
+    firesignal(game.ReplicatedStorage.EntityInfo.DeathHint.OnClientEvent, {"It seem you are have trouble with Rush...", "The lights will always flicker when it is near.", "Whenever this happends, find a hiding spot!"}, "Blue")
+})
+
+
+
+-- Run the created entity
+Spawner.runEntity(entityTable)
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Ambush",
+	Callback = function()
+      		local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+
+
+-- Create entity
+local entityTable = Spawner.createEntity({
+    CustomName = "Ambush", -- Custom name of your entity
+    Model = "https://github.com/Destruction-Studios/Custom-Entities/blob/main/Ambush.rbxm?raw=true", -- Can be GitHub file or rbxassetid
+    Speed = 200, -- Percentage, 100 = default Rush speed
+    DelayTime = 2, -- Time before starting cycles (seconds)
+    HeightOffset = 0,
+    CanKill = true,
+    KillRange = 50,
+    BackwardsMovement = false,
+    BreakLights = true,
+    FlickerLights = {
+        true, -- Enabled/Disabled
+        3, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 2,
+        Max = 6,
+        WaitTime = 2,
+    },
+    CamShake = {
+        true, -- Enabled/Disabled
+        {3.5, 20, 0.1, 1}, -- Shake values (don't change if you don't know)
+        100, -- Shake start distance (from Entity to you)
+    },
+    firesignal(game.ReplicatedStorage.EntityInfo.DeathHint.OnClientEvent, {"You died to who you call Ambush", "Its a tricky one", "Use what you have learned from Rush"}, "Blue")
+})
+
+-- Run the created entity
+Spawner.runEntity(entityTable)
+  	end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Rooms"
+})
+
+Tab:AddButton({
+	Name = "A-60",
+	Callback = function()
+      		local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+local entityTable = Spawner.createEntity({
+    CustomName = "A-60", -- Custom name of your entity
+    Model = "https://github.com/tonyBflako/vynixusdoors/blob/main/A60edit.rbxm?raw=true", -- Can be GitHub file or rbxassetid
+    Speed = 250, -- Percentage, 100 = default Rush speed
+    DelayTime = 2, -- Time before starting cycles (seconds)
+    HeightOffset = 2.5,
+    CanKill = true,
+    KillRange = 50,
+    BackwardsMovement = false,
+    BreakLights = false,
+    FlickerLights = {
+        false, -- Enabled/Disabled
+        1, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 1,
+        Max = 1,
+        WaitTime = 2,
+    },
+    CamShake = {
+        false, -- Enabled/Disabled
+    },
+    Jumpscare = {
+        false, -- Enabled/Disabled
+    },
+    firesignal(game.ReplicatedStorage.EntityInfo.DeathHint.OnClientEvent, {"Oh... Hello.", "I'm surprised you found this place...", "It's pretty tedious just to get here, last time I checked.", "Anyways, what'd you die to?", "Oh... the red one. I'm not too sure on what I would call it...", "Well, it usually attacks around room A-60, so...", "...you could just call it A-60. I dont know.", "Anyways, I hope you dont mind trying again, It would be helpful."}, "Yellow")
+})
+
+Spawner.runEntity(entityTable)
+  	end    
+})
+
+Tab:AddButton({
+	Name = "A-120",
+	Callback = function()
+      		local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+local entityTable = Spawner.createEntity({
+    CustomName = "A-120", -- Custom name of your entity
+    Model = "https://github.com/tonyBflako/vynixusdoors/blob/main/A120edit.rbxm?raw=true", -- Can be GitHub file or rbxassetid
+    Speed = 75, -- Percentage, 100 = default Rush speed
+    DelayTime = 2, -- Time before starting cycles (seconds)
+    HeightOffset = 1.5,
+    CanKill = false,
+    KillRange = 10,
+    BackwardsMovement = true,
+    BreakLights = false,
+    FlickerLights = {
+        false
+    },
+    Cycles = {
+        Min = 1,
+        Max = math.random(1,2),
+        WaitTime = 2.5,
+    },
+    CamShake = {
+        false
+    },
+    Jumpscare = {
+        false, -- Enabled/Disabled
+    },
+   CustomDialog = {" "},
+})
+
+
+Spawner.runEntity(entityTable)
+  	end    
+})
+
+
+
