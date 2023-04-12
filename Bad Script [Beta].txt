@@ -1,1 +1,0 @@
-loadstring(game:HttpGet("https://github.com/Destruction-Studios/Entity-Spawer-Script/blob/main/Main.txt"))()
