@@ -1,0 +1,1003 @@
+
+--random vars
+
+local Players = game:GetService("Players")
+local ReSt = game:GetService("ReplicatedStorage")
+local Plr = Players.LocalPlayer
+local Char = Plr.Character or Plr.CharacterAdded:Wait()
+local Hum = Char:WaitForChild("Humanoid")
+local ModuleScripts = {
+    ModuleEvents = require(ReSt.ClientModules.Module_Events),
+    MainGame = require(Plr.PlayerGui.MainUI.Initiator.Main_Game),
+}
+
+local canKill = false
+
+local lightBrightness = 0
+local lightRange = 60
+
+local character = game:GetService("Players").LocalPlayer.Character;
+			
+	repeat wait() until character ~= nil;
+			if not character.HumanoidRootPart:FindFirstChildWhichIsA("PointLight") then
+				local headlight = Instance.new("PointLight", character.HumanoidRootPart);
+				headlight.Brightness = lightBrightness;
+				headlight.Range = lightRange;
+end;
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+--Main-Window
+local Window = OrionLib:MakeWindow({Name = "COOLHAX[beta]", HidePremium = true, SaveConfig = true, ConfigFolder = "SomeCrappyScriptCONFIG"})
+
+--Entity_Spawner
+local EntitySpawnerTab = Window:MakeTab({
+	Name = "Entity Spawner",
+	Icon = "rbxassetid://0",
+	PremiumOnly = false
+})
+
+EntitySpawnerTab:AddToggle({
+	Name = "Toggle Killing",
+	Default = false,
+	Callback = function(value)
+		canKill = value
+	end    
+})
+
+local RegularSection = EntitySpawnerTab:AddSection({
+	Name = "Regular"
+})	
+
+RegularSection:AddButton({
+	Name = "Screech",
+	Callback = function()
+      		    require(game.StarterGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech)(require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game),
+workspace.CurrentRooms[game.Players.LocalPlayer:GetAttribute("CurrentRoom")])
+  	end    
+})
+
+RegularSection:AddButton({
+	Name = "Seek Eyes",
+	Callback = function()
+      		    require(game.ReplicatedStorage.ClientModules.EntityModules.Seek).tease(nil, workspace.CurrentRooms[game.Players.LocalPlayer:GetAttribute("CurrentRoom")], 100)
+  	end    
+})
+
+
+RegularSection:AddButton({
+	Name = "Glitch",
+	Callback = function()	    require(game.ReplicatedStorage.ClientModules.EntityModules.Glitch).stuff(require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game),
+workspace.CurrentRooms[game.Players.LocalPlayer:GetAttribute("CurrentRoom")])
+  	end    
+})
+
+RegularSection:AddButton({
+	Name = "Rush",
+	Callback = function()
+      		local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+
+
+-- Create entity
+local entityTable = Spawner.createEntity({
+    CustomName = "Rush", -- Custom name of your entity
+    Model = "https://github.com/RegularVynixu/Utilities/blob/main/Doors%20Entity%20Spawner/Models/Rush.rbxm?raw=true", -- Can be GitHub file or rbxassetid
+    Speed = 100, -- Percentage, 100 = default Rush speed
+    DelayTime = 2, -- Time before starting cycles (seconds)
+    HeightOffset = 0,
+    CanKill = canKill,
+    KillRange = 50,
+    BackwardsMovement = false,
+    BreakLights = true,
+    FlickerLights = {
+        true, -- Enabled/Disabled
+        1, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 1,
+        Max = 1,
+        WaitTime = 2,
+    },
+    CamShake = {
+        true, -- Enabled/Disabled
+        {3.5, 20, 0.1, 1}, -- Shake values (don't change if you don't know)
+        100, -- Shake start distance (from Entity to you)
+    },
+    Jumpscare = {
+        true, -- Enabled/Disabled
+        {
+            Image1 = "rbxassetid://10483855823", -- Image1 url
+            Image2 = "rbxassetid://10483999903", -- Image2 url
+            Shake = true,
+            Sound1 = {
+                10483790459, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Sound2 = {
+                10483837590, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Flashing = {
+                true, -- Enabled/Disabled
+                Color3.fromRGB(255, 255, 255), -- Color
+            },
+            Tease = {
+                true, -- Enabled/Disabled
+                Min = 1,
+                Max = 3,
+            },
+        },
+    },
+    firesignal(game.ReplicatedStorage.EntityInfo.DeathHint.OnClientEvent, {"It seem you are have trouble with Rush...", "The lights will always flicker when it is near.", "Whenever this happends, find a hiding spot!"}, "Blue")
+})
+
+
+
+-- Run the created entity
+Spawner.runEntity(entityTable)
+  	end    
+})
+
+RegularSection:AddButton({
+	Name = "Ambush",
+	Callback = function()
+      		local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+
+
+-- Create entity
+local entityTable = Spawner.createEntity({
+    CustomName = "Ambush", -- Custom name of your entity
+    Model = "https://github.com/Destruction-Studios/Custom-Entities/blob/main/Ambush.rbxm?raw=true", -- Can be GitHub file or rbxassetid
+    Speed = 250, -- Percentage, 100 = default Rush speed
+    DelayTime = 8, -- Time before starting cycles (seconds)
+    HeightOffset = 0,
+    CanKill = canKill,
+    KillRange = 50,
+    BackwardsMovement = false,
+    BreakLights = true,
+    FlickerLights = {
+        true, -- Enabled/Disabled
+        3, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 2,
+        Max = 6,
+        WaitTime = 2,
+    },
+    CamShake = {
+        true, -- Enabled/Disabled
+        {3.5, 20, 0.1, 1}, -- Shake values (don't change if you don't know)
+        100, -- Shake start distance (from Entity to you)
+    },
+    firesignal(game.ReplicatedStorage.EntityInfo.DeathHint.OnClientEvent, {"You died to who you call Ambush", "Its a tricky one", "Use what you have learned from Rush"}, "Blue")
+})
+
+entityTable.Debug.OnEntitySpawned = function()
+    game.Workspace.Ambience_Ambush:play()
+end
+
+-- Run the created entity
+Spawner.runEntity(entityTable)
+  	end    
+})
+
+RegularSection:AddButton({
+	Name = "Halt",
+	Callback = function()
+require(game.ReplicatedStorage.ClientModules.EntityModules.Shade).stuff(require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game),
+workspace.CurrentRooms[game.Players.LocalPlayer:GetAttribute("CurrentRoom")])
+  	end    
+})
+
+local RoomsSection = EntitySpawnerTab:AddSection({
+	Name = "Rooms"
+})
+
+RoomsSection:AddButton({
+	Name = "A-60",
+	Callback = function()
+      		local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+local entityTable = Spawner.createEntity({
+    CustomName = "A-60", -- Custom name of your entity
+    Model = "https://github.com/tonyBflako/vynixusdoors/blob/main/A60edit.rbxm?raw=true", -- Can be GitHub file or rbxassetid
+    Speed = 250, -- Percentage, 100 = default Rush speed
+    DelayTime = 2, -- Time before starting cycles (seconds)
+    HeightOffset = 2.5,
+    CanKill = canKill,
+    KillRange = 50,
+    BackwardsMovement = false,
+    BreakLights = false,
+    FlickerLights = {
+        false, -- Enabled/Disabled
+        1, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 1,
+        Max = 1,
+        WaitTime = 2,
+    },
+    CamShake = {
+        false, -- Enabled/Disabled
+    },
+    Jumpscare = {
+        false, -- Enabled/Disabled
+    },
+    firesignal(game.ReplicatedStorage.EntityInfo.DeathHint.OnClientEvent, {"Oh... Hello.", "I'm surprised you found this place...", "It's pretty tedious just to get here, last time I checked.", "Anyways, what'd you die to?", "Oh... the red one. I'm not too sure on what I would call it...", "Well, it usually attacks around room A-60, so...", "...you could just call it A-60. I dont know.", "Anyways, I hope you dont mind trying again, It would be helpful."}, "Yellow")
+})
+
+Spawner.runEntity(entityTable)
+  	end    
+})
+
+RoomsSection:AddLabel("A-90 is under KeyBinds")
+
+RoomsSection:AddButton({
+	Name = "A-120",
+	Callback = function()
+      		local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+local entityTable = Spawner.createEntity({
+    CustomName = "A-120", -- Custom name of your entity
+    Model = "https://github.com/tonyBflako/vynixusdoors/blob/main/A120edit.rbxm?raw=true", -- Can be GitHub file or rbxassetid
+    Speed = 75, -- Percentage, 100 = default Rush speed
+    DelayTime = 2, -- Time before starting cycles (seconds)
+    HeightOffset = 1.5,
+    CanKill = canKill,
+    KillRange = 10,
+    BackwardsMovement = true,
+    BreakLights = false,
+    FlickerLights = {
+        false
+    },
+    Cycles = {
+        Min = 1,
+        Max = math.random(1,2),
+        WaitTime = 2.5,
+    },
+    CamShake = {
+        false
+    },
+    Jumpscare = {
+        false, -- Enabled/Disabled
+    },
+   CustomDialog = {" "},
+})
+
+
+Spawner.runEntity(entityTable)
+  	end    
+})
+
+local CustomSection = EntitySpawnerTab:AddSection({
+	Name = "Custom"
+})
+
+CustomSection:AddButton({
+	Name = "Mad Jack",
+	Callback = function()
+      		local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+
+
+-- Create entity
+local entityTable = Spawner.createEntity({
+    CustomName = "Jack", -- Custom name of your entity
+    Model = "https://github.com/Destruction-Studios/Custom-Entities/blob/main/Jack.rbxm?raw=true", -- Can be GitHub file or rbxassetid
+    Speed = 400, -- Percentage, 100 = default Rush speed
+    DelayTime = 3, -- Time before starting cycles (seconds)
+    HeightOffset = 0,
+    CanKill = canKill,
+    KillRange = 50,
+    BackwardsMovement = false,
+    BreakLights = true,
+    FlickerLights = {
+        true, -- Enabled/Disabled
+        10, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 10,
+        Max = 15,
+        WaitTime = 1,
+    },
+    CamShake = {
+        true, -- Enabled/Disabled
+        {3.5, 20, 0.1, 1}, -- Shake values (don't change if you don't know)
+        100, -- Shake start distance (from Entity to you)
+    },
+
+    firesignal(game.ReplicatedStorage.EntityInfo.DeathHint.OnClientEvent, {"You Died To Who You Call Jack", "Wait...", "Jack Doesn't Kill...", "I Dont Understand...", "This is Weird...", "Oh Well", "Anyways, I hope you dont mind trying again, It would be helpful."}, "Blue")
+})
+
+
+-- Run the created entity
+Spawner.runEntity(entityTable)
+  	end    
+})
+
+
+CustomSection:AddLabel("Idk who made these but credits to them")
+
+CustomSection:AddButton({
+	Name = "Frunge",
+	Callback = function()
+      		local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+
+local entityTable = Spawner.createEntity({
+    CustomName = "Frunge", -- Custom name of your entity
+    Model = "https://github.com/tonyBflako/vynixusdoors/blob/main/Frunge.rbxm?raw=true",
+    Speed = 50,
+    DelayTime = 10,
+    HeightOffset = 0,
+    CanKill = false,
+    KillRange = 50,
+    BackwardsMovement = true,
+    BreakLights = false,
+    FlickerLights = {
+        false, -- Enabled/Disabled
+    },
+    Cycles = {
+        Min = 1,
+        Max = 2,
+    },
+    CamShake = {
+        false, -- Enabled/Disabled
+    },
+    Jumpscare = {
+        false, -- Enabled/Disabled
+    },
+})
+
+entityTable.Debug.OnEntityStartMoving = function()
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 5
+end
+
+entityTable.Debug.OnEntitySpawned = function()
+    firesignal(game.ReplicatedStorage.EntityInfo.Caption.OnClientEvent, 'its getting cold.')
+    game:GetService("Workspace")["Ambience_Dark"]:Play()
+end
+
+entityTable.Debug.OnLookAtEntity = function()
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 3
+end
+
+entityTable.Debug.OnEntityDespawned = function()
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 15
+end
+
+Spawner.runEntity(entityTable)
+  	end    
+})
+
+
+CustomSection:AddButton({
+	Name = "Putrid",
+	Callback = function()
+      		local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+
+
+-- Create entity
+local entityTable = Spawner.createEntity({
+    CustomName = "The Putrid", -- Custom name of your entity
+    Model = "https://github.com/tonyBflako/vynixusdoors/blob/main/fatality.rbxm?raw=true", -- Can be GitHub file or rbxassetid
+    Speed = 300, -- Percentage, 100 = default Rush speed
+    DelayTime = 5, -- Time before starting cycles (seconds)
+    HeightOffset = 0,
+    CanKill = canKill,
+    KillRange = 50,
+    BackwardsMovement = false,
+    BreakLights = true,
+    FlickerLights = {
+        true, -- Enabled/Disabled
+        100, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 10,
+        Max = 35,
+        WaitTime = .1,
+    },
+    CamShake = {
+        true, -- Enabled/Disabled
+        {5555, 133124, 0, 1.5}, -- Shake values (don't change if you don't know)
+        60, -- Shake start distance (from Entity to you)
+    },
+    Jumpscare = {
+        true, -- Enabled/Disabled
+        {
+            Image1 = "rbxassetid://0", -- Image1 url
+            Image2 = "rbxassetid://0", -- Image2 url
+            Shake = true,
+            Sound1 = {
+                7817626386, -- SoundId
+                { Volume = 5 }, -- Sound properties
+            },
+            Sound2 = {
+                0, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Flashing = {
+                false, -- Enabled/Disabled
+                Color3.fromRGB(255, 255, 255), -- Color
+            },
+            Tease = {
+                true, -- Enabled/Disabled
+                Min = 50,
+                Max = 50,
+            },
+        },
+    },
+   firesignal(game.ReplicatedStorage.EntityInfo.DeathHint.OnClientEvent, {"You died who you call Putrid", "Once you hear the noise you just hear...", "FIND SOMEWHERE TO HIDE", "Closets will NOT protect you.", "he is too fast, and hide WILL KICK YOU OUT", "I hope you find a way to beat Him"}, "Blue") 
+})
+
+Spawner.runEntity(entityTable)
+  	end    
+})
+
+local UtilitiesTab = Window:MakeTab({
+	Name = "Utilities",
+	Icon = "rbxassetid://0",
+	PremiumOnly = false
+})
+
+UtilitiesTab:AddButton({
+	Name = "Kill",
+	Callback = function()
+ firesignal(game.ReplicatedStorage.EntityInfo.DeathHint.OnClientEvent, {"lol", "u pressed a button", "and u killed urself", "lol"}, "Blue")      	
+
+game.Players.LocalPlayer.Character.Humanoid.Health = 0	
+ReSt.GameStats["Player_".. Plr.Name].Total.DeathCause.Value = "urself lol"
+  	end    
+})
+
+UtilitiesTab:AddButton({
+	Name = "Revive",
+	Callback = function()
+      	game.ReplicatedStorage.EntityInfo.Revive:FireServer()	
+  	end    
+})
+
+UtilitiesTab:AddTextbox({
+	Name = "Fire Caption",
+	Default = "lol",
+	TextDisappear = true,
+	Callback = function(caption)
+	if caption == "die" then
+     
+ firesignal(game.ReplicatedStorage.EntityInfo.DeathHint.OnClientEvent, {"lol", "u pressed a button", "and u killed urself", "lol"}, "Blue") 
+	game.Players.LocalPlayer.Character.Humanoid.Health = 0	
+ReSt.GameStats["Player_".. Plr.Name].Total.DeathCause.Value = "urself lol"
+	else
+    firesignal(game.ReplicatedStorage.EntityInfo.Caption.OnClientEvent, caption)
+	end
+end	  
+})
+
+
+UtilitiesTab:AddButton({
+	Name = "Unload",
+	Callback = function()
+      	OrionLib:Destroy()
+  	end    
+})
+
+local ScriptsTab = Window:MakeTab({
+	Name = "Scripts",
+	Icon = "rbxassetid://0",
+	PremiumOnly = false
+})
+
+local Bind = "K"
+
+ScriptsTab:AddButton({
+	Name = "Inf Yield",
+	Callback = function() 
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+  	end    
+})
+
+ScriptsTab:AddButton({
+	Name = "Dex",
+	Callback = function() 
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/peyton2465/Dex/master/out.lua"))()
+  	end    
+})
+
+ScriptsTab:AddButton({
+	Name = "MSDOORS",
+	Callback = function()
+      		-- MSDOORS
+loadstring(game:HttpGet(("https://raw.githubusercontent.com/mstudio45/MSDOORS/main/MSDOORS.lua"),true))()
+  	end    
+})
+
+ScriptsTab:AddButton({
+	Name = "Vynixius Hub",
+	Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Vynixius/main/Doors/Loader.lua"))()
+  	end    
+})
+
+ScriptsTab:AddButton({
+	Name = "Ominous Vibes",
+	Callback = function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/OminousVibes-Exploit/Scripts/main/doors/main.lua"))()
+  	end    
+})
+
+local BypasserSection = ScriptsTab:AddSection({
+	Name = "Section"
+})
+
+BypasserSection:AddTextbox({
+	Name = "KeyBind",
+	Default = "K",
+	TextDisappear = true,
+	Callback = function(value)
+		Bind = value
+	end	  
+})
+
+BypasserSection:AddButton({
+	Name = "AC NoClip Bypasser",
+	Callback = function()
+      		-- Made by Deivid#5444
+
+_G.Keybind = Bind
+_G.ClipGui = true
+_G.IncludeNoclip = true
+
+local isEnabled = false
+
+local UIS = game:GetService("UserInputService")
+
+local Plr = game.Players.LocalPlayer
+local Char = Plr.Character or Plr.CharacterAdded:Wait()
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = game.CoreGui
+ScreenGui.Enabled = _G.ClipGui or false
+
+local TextLabel = Instance.new("TextLabel")
+TextLabel.Parent = ScreenGui
+
+TextLabel.AnchorPoint = Vector2.new(1, 0)
+TextLabel.Position = UDim2.new(1, -5, 0, 0)
+TextLabel.Text = "Noclip + Bypasser: Off"
+TextLabel.Size = UDim2.new(0,200,0,75)
+TextLabel.TextScaled = true
+TextLabel.TextStrokeColor3 = Color3.new(1,1,1)
+TextLabel.TextStrokeTransparency = 0
+TextLabel.BackgroundTransparency = 1
+
+function getValue()
+    local value
+    if isEnabled then
+        value = "On"
+    else
+        value = "Off"
+    end
+    return value
+end
+
+UIS.InputBegan:Connect(function(input, gp)
+    if gp then return end
+
+    if input.KeyCode == Enum.KeyCode[_G.Keybind] then
+        isEnabled = not isEnabled
+        task.wait()
+        TextLabel.Text = "Noclip + Bypasser: " .. getValue()
+    end
+end)
+
+game:GetService("RunService").RenderStepped:Connect(function()
+    if not Char:FindFirstChild("HumanoidRootPart") then return end
+    if _G.IncludeNoclip then
+        Char.HumanoidRootPart.CanCollide = not isEnabled
+        Char.Collision.CanCollide = not isEnabled
+    end
+
+    local HrpCFrame = Char.HumanoidRootPart.CFrame
+
+    local ray = Ray.new(HrpCFrame.Position, HrpCFrame.LookVector * 0.5)
+    local part = workspace:FindPartOnRay(ray)
+    if part and part.CanCollide == true and isEnabled then
+        Char.HumanoidRootPart.Anchored = true
+        Char:PivotTo(Char.HumanoidRootPart.CFrame * CFrame.new(0, 1000, 0))
+        task.wait()
+        Char:PivotTo(Char.HumanoidRootPart.CFrame * CFrame.new(0, 0, -4))
+        task.wait()
+        Char:PivotTo(Char.HumanoidRootPart.CFrame * CFrame.new(0, -1000, 0))
+        task.wait(0.1)
+        Char.HumanoidRootPart.Anchored = false
+    end
+end)
+  	end    
+})
+
+ScriptsTab:AddLabel("Made by Deivid")
+
+local KeyBindsTab = Window:MakeTab({
+	Name = "KeyBinds",
+	Icon = "rbxassetid://0",
+	PremiumOnly = false
+})
+
+local canBind = false
+
+KeyBindsTab:AddToggle({
+	Name = "Enable Keybinds",
+	Default = false,
+	Callback = function(value)
+		canBind = value
+	end    
+})
+
+KeyBindsTab:AddBind({
+	Name = "Screech",
+	Default = Enum.KeyCode.R,
+	Hold = false,
+	Callback = function()
+		if canBind == true then
+   		    require(game.StarterGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech)(require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game),
+workspace.CurrentRooms[game.Players.LocalPlayer:GetAttribute("CurrentRoom")])
+		end			
+	end    
+})
+
+KeyBindsTab:AddBind({
+	Name = "Glitch",
+	Default = Enum.KeyCode.T,
+	Hold = false,
+	Callback = function()
+		if canBind == true then
+	require(game.ReplicatedStorage.ClientModules.EntityModules.Glitch).stuff(require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game),
+workspace.CurrentRooms[game.Players.LocalPlayer:GetAttribute("CurrentRoom")])
+		end	
+	end    
+})
+
+KeyBindsTab:AddBind({
+	Name = "A-90",
+	Default = Enum.KeyCode.X,
+	Hold = false,
+	Callback = function()
+		if canBind == true then
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/Destruction-Studios/Entity-Spawer-Script/main/A-90.txt?raw=true"))()
+	end
+end   
+})
+
+KeyBindsTab:AddBind({
+	Name = "Halt",
+	Default = Enum.KeyCode.Q,
+	Hold = false,
+	Callback = function()
+		if canBind == true then
+	require(game.ReplicatedStorage.ClientModules.EntityModules.Shade).stuff(require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game),
+workspace.CurrentRooms[game.Players.LocalPlayer:GetAttribute("CurrentRoom")])
+		end	
+	end    
+})
+
+local FlickerSection = KeyBindsTab:AddSection({
+	Name = "Flicker Lights"
+})
+
+local flickerLength = 2
+
+FlickerSection:AddSlider({
+	Name = "Flicker Length",
+	Min = 1,
+	Max = 100,
+	Default = 2,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Flicker Length (in seconds)",
+	Callback = function(value)
+		flickerLength = value
+	end    
+})
+
+FlickerSection:AddBind({
+	Name = "Flicker Lights",
+	Default = Enum.KeyCode.F,
+	Hold = false,
+	Callback = function()
+		if canBind == true then
+	ModuleScripts.ModuleEvents.flicker(workspace.CurrentRooms[ReSt.GameData.LatestRoom.Value], flickerLength)
+		end	
+	end    
+})
+
+
+
+KeyBindsTab:AddBind({
+	Name = "Seek Eyes",
+	Default = Enum.KeyCode.V,
+	Hold = false,
+	Callback = function()
+		if canBind == true then
+	require(game.ReplicatedStorage.ClientModules.EntityModules.Seek).tease(nil, workspace.CurrentRooms[game.Players.LocalPlayer:GetAttribute("CurrentRoom")], 100)
+		end	
+	end    
+})
+
+KeyBindsTab:AddBind({
+	Name = "Dark Room Noise",
+	Default = Enum.KeyCode.N,
+	Hold = false,
+	Callback = function()
+		if canBind == true then
+ 		game:GetService("Workspace")["Ambience_Dark"]:Play()
+		end	
+	end    
+})
+
+local TrollingTab = Window:MakeTab({
+	Name = "Trolling",
+	Icon = "rbxassetid://0",
+	PremiumOnly = false
+})
+
+TrollingTab:AddLabel("Work in progress")
+
+local CustomizeTab = Window:MakeTab({
+	Name = "Customize",
+	Icon = "rbxassetid://0",
+	PremiumOnly = false
+})
+
+local line1 = nil
+local line2 = nil
+local line3 = nil
+local line4 = nil
+local line5 = nil
+local line6 = nil
+local line7 = nil
+local line8 = nil
+local deathReason = Unknown
+local deathType = "Blue"
+
+local DeathMessageSection = CustomizeTab:AddSection({
+	Name = "Custom Death Message"
+})
+
+DeathMessageSection:AddTextbox({
+	Name = "Line 1",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(value)
+		line1 = value
+	end	  
+})
+
+DeathMessageSection:AddTextbox({
+	Name = "Line 2",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(value)
+		line2 = value
+	end	  
+})
+
+DeathMessageSection:AddTextbox({
+	Name = "Line 3",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(value)
+		line3 = value
+	end	  
+})
+
+DeathMessageSection:AddTextbox({
+	Name = "Line 4",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(value)
+		line4 = value
+	end	  
+})
+
+DeathMessageSection:AddTextbox({
+	Name = "Line 5",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(value)
+		line5 = value
+	end	  
+})
+
+DeathMessageSection:AddTextbox({
+	Name = "Line 6",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(value)
+		line6 = value
+	end	  
+})
+
+DeathMessageSection:AddTextbox({
+	Name = "Line 7",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(value)
+		line7 = value
+	end	  
+})
+
+DeathMessageSection:AddTextbox({
+	Name = "Line 8",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(value)
+		line8 = value
+	end	  
+})
+
+DeathMessageSection:AddTextbox({
+	Name = "Death Reason",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(value)
+		deathReason = value
+	end	  
+})
+
+DeathMessageSection:AddDropdown({
+	Name = "Death Message Color",
+	Default = "Blue",
+	Options = {"Blue", "Yellow"},
+	Callback = function(value)
+		deathType = value
+	end    
+})
+
+DeathMessageSection:AddButton({
+	Name = "Start Message",
+	Callback = function()
+      		 firesignal(game.ReplicatedStorage.EntityInfo.DeathHint.OnClientEvent, {line1, line2, line3, line4, line5, line6, line7, line8}, deathType)      	
+
+game.Players.LocalPlayer.Character.Humanoid.Health = 0	
+ReSt.GameStats["Player_".. Plr.Name].Total.DeathCause.Value = deathReason
+  	end    
+})
+
+local ItemTab = Window:MakeTab({
+	Name = "Items",
+	Icon = "rbxassetid://0",
+	PremiumOnly = false
+})
+--vars
+local uses = 1
+local range = 50
+local onAnything = true
+local fail = false
+
+local CrucifixSection = ItemTab:AddSection({
+	Name = "Crucifix"
+})
+
+CrucifixSection:AddSlider({
+	Name = "Uses",
+	Min = 1,
+	Max = 150,
+	Default = 5,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Uses",
+	Callback = function(usesValue)
+		uses = usesValue
+	end    
+})
+
+CrucifixSection:AddSlider({
+	Name = "Range",
+	Min = 1,
+	Max = 150,
+	Default = 50,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Range",
+	Callback = function(rangeValue)
+		range = rangeValue
+	end    
+})
+
+CrucifixSection:AddToggle({
+	Name = "On Anything",
+	Default = true,
+	Callback = function(onAnythingValue)
+		onAnything = onAnythingValue
+	end    
+})
+
+CrucifixSection:AddToggle({
+	Name = "Fail",
+	Default = false,
+	Callback = function(failValue)
+		fail = failValue
+	end    
+})
+
+CrucifixSection:AddButton({
+	Name = "Crucifix",
+	Callback = function()
+_G.Uses = uses
+_G.Range = range
+_G.OnAnything = onAnything
+_G.Fail = fail
+loadstring(game:HttpGet('https://raw.githubusercontent.com/PenguinManiack/Crucifix/main/Crucifix.lua'))()
+  	end    
+})
+
+CrucifixSection:AddLabel("Made by PenguinManiack")
+
+
+ItemTab:AddButton({
+	Name = "Tablet",
+	Callback = function()
+_G.UpdateStars = true -- stars disappear after picking up a book/breaker pole | false: a little lag
+_G.OnShop = true -- can buy on pre run shop
+_G.Price = 99999999 -- tablet price on shop
+_G.Description = "Bro Da Scanner!!!" -- tablet description on shop
+
+loadstring(game:HttpGet('https://raw.githubusercontent.com/DeividComSono/Scripts/main/Scanner.lua'))()
+  	end    
+})
+
+ItemTab:AddLabel("Made by Deivid")
+
+local speedBoost = 7
+local effectDuration = 25
+
+local VitaminSection = ItemTab:AddSection({
+	Name = "Vitamins"
+})
+
+VitaminSection:AddSlider({
+	Name = "Speed Boost",
+	Min = 1,
+	Max = 8,
+	Default = 5,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Boost",
+	Callback = function(value)
+		speedBoost = value
+	end    
+})
+
+VitaminSection:AddSlider({
+	Name = "Effect Duration",
+	Min = 1,
+	Max = 50,
+	Default = 25,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Duration",
+	Callback = function(value)
+		effectDuration = value
+	end    
+})
+
+
+VitaminSection:AddButton({
+	Name = "Vitamins",
+	Callback = function()
+getgenv().CustomVitamins = {
+    SpeedBoost = speedBoost,
+    EffectDuration = effectDuration
+}
+loadstring(game:HttpGet("https://pastebin.com/raw/qH9PEhfQ"))()
+  	end    
+})
+
+OrionLib:Init()
+
+
+local Achievements = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+
+-- Creates and displays your custom achievement
+Achievements.Get({
+    Title = "Welcome",
+    Desc = "GUI loaded, Hope you enjoy",
+    Reason = 'thx for chosing COOLHAX',
+    Image = "https://tr.rbxcdn.com/8c752d2826a972d15636e92fdcdf877e/420/420/Image/Png",
+})
